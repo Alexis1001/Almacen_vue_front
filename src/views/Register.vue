@@ -21,6 +21,11 @@
 					<input type="password" v-model="user.password" name="password" id="password" class="input-text" placeholder="Your Password" required>
 					<i class="fas fa-lock"></i>
 				</div>
+				<select v-model="selected">
+					<option disabled value="">Please select one</option>
+					<option>administrator</option>
+					<option>cashier</option>
+					</select>
 				<div class="form-row-last">
 					<input type="submit" name="register" class="register" value="Register">
 					
@@ -45,22 +50,41 @@ export default{
 				username:'',
 				email:'',
 				password:'',
-				rol:1,
-			}
+				rol:'',
+			},
+			selected:'',
 		}
 
 	},
 	methods:{
-
 		register:function(){
+			if(this.selected==="administrator"){
+				console.log("logeado como admin");
+				this.user.rol=1;
+			}
+			if(this.selected==="cashier"){
+				console.log("logeado como cajero");
+				this.user.rol=2;
+			}
+			console.log("elemento selecionado "+this.user.rol)
 			axios.post(this.api_url+"user/register",this.user)
 			.then(response => {
-				console.log("datos "+response.data);
-				this.$router.push({name:'PuntoVenta'});
-          })
-          .catch(e => {
-            alert("el error es  "+e);
-          })
+				console.log("datos del registrado");
+				console.log(response.data);
+
+				if(response.data.user.rol===1){
+					console.log("soy el administrador ")
+					localStorage.setItem('token', JSON.stringify(response.data.token.token));
+					this.$router.push('/Admin/'+response.data.user.rol);
+				}
+				else{
+					console.log("soy el cajero")
+					localStorage.setItem('token', JSON.stringify(response.data.token.token));
+					this.$router.push('/Products/'+response.data.user.rol);
+				}
+			}).catch(e => {
+				alert("el error es  "+e.response);
+				})
 		}
 
 	}

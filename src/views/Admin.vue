@@ -5,7 +5,7 @@
         <h1>warehouse</h1>
         <hr />
         <div class="form-group"></div>
-        <p class="null">welcome admin</p>
+        <p class="null">welcome warehouse</p>
         <hr />
         <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
         <button type="button" class="btn btn-primary waves-effect waves-light">see inventories </button>
@@ -50,11 +50,10 @@ export default {
             this.start();
         },
         Product:function(){
-            this.$router.push({name:'AddProducts'});
+            this.$router.push({name:'Products'});
         },
         Transactions:function(){
             this.$router.push({name:'Transactions'});
-
         }
     }
 }

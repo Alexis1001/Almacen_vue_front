@@ -3,10 +3,10 @@ import Router from 'vue-router';
 import Home from './views/Home.vue';
 import Login from './views/Login.vue';
 import Register from './views/Register.vue'
-import PuntoVenta from './views/PuntoVenta.vue';
 import Admin from './views/Admin.vue';
-import AddProducts from './views/AddProducts.vue';
+import Products from './views/Products.vue';
 import Transactions from './views/Transactions.vue';
+import AddProducts from '/view/AddProducts';
 
 Vue.use(Router);
 
@@ -38,24 +38,24 @@ export default new Router({
       component:Register,
     },
     {
-      path:'/PuntoVenta',
-      name:'PuntoVenta',
-      component:PuntoVenta,
-    },
-    {
       path:'/Admin/:rol',
       name:'Admin',
       component:Admin,
     },
     {
-      path:'/AddProducts',
-      name:'AddProducts',
-      component:AddProducts,
+      path:'/Products/:rol',
+      name:'Products',
+      component:Products,
     },
     {
       path:'/Transactions',
       name:'Transactions',
       component:Transactions,
+    },
+    {
+      path:'/AddProducts/:rol',
+      name:'AddProducts',
+      component:AddProducts,
     },
     
   ],

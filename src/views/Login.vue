@@ -42,18 +42,16 @@ export default{
           
           if(user_rol===1){
             console.log("soy el administrador ");
-            //this.$router.push({name:'Admin',params:{rol:user_rol} });
             this.$router.push('/Admin/'+response.data.user.rol);
-            //localStorage.setItem('token '+JSON.stringify(response.data.token.token));
             localStorage.setItem('token', JSON.stringify(response.data.token.token));
-           
-            
+             
           }
           else{
             console.log("soy el cajero");
-            //this.$router.push({name:'PuntoVenta'});
-            this.$router.push({name:'PuntoVenta',params:{rol:user_rol} });
-            //this.$router.push('/app/'+response.data.user.user_rol);
+            //this.$router.push({name:'PuntoVenta',params:{rol:user_rol} });
+            this.$router.push('/Products/'+response.data.user.rol);
+            localStorage.setItem('token', JSON.stringify(response.data.token.token));
+          
           }
          
           })
