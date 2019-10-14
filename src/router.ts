@@ -5,6 +5,8 @@ import Login from './views/Login.vue';
 import Register from './views/Register.vue'
 import PuntoVenta from './views/PuntoVenta.vue';
 import Admin from './views/Admin.vue';
+import AddProducts from './views/AddProducts.vue';
+import Transactions from './views/Transactions.vue';
 
 Vue.use(Router);
 
@@ -44,6 +46,16 @@ export default new Router({
       path:'/Admin/:rol',
       name:'Admin',
       component:Admin,
+    },
+    {
+      path:'/AddProducts',
+      name:'AddProducts',
+      component:AddProducts,
+    },
+    {
+      path:'/Transactions',
+      name:'Transactions',
+      component:Transactions,
     },
     
   ],

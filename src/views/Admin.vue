@@ -1,15 +1,33 @@
 <template>
-<div>
-
-    <p> vienvenido admin</p>
-    <button @click="start" > boton admin </button>
-
+<div class="container">
+    <div class="text-center">
+        <div class="form-group"></div>
+        <h1>warehouse</h1>
+        <hr />
+        <div class="form-group"></div>
+        <p class="null">welcome admin</p>
+        <hr />
+        <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+        <button type="button" class="btn btn-primary waves-effect waves-light">see inventories </button>
+        <!-- Default button -->
+        <!--<button type="button" class="btn btn-default waves-effect waves-light">see transaction</button>-->
+        <!-- Secondary button -->
+        <button type="button"  v-on:click="Transactions"    class="btn btn-secondary waves-effect waves-light">see transactions</button>
+        <!-- Indicates a successful or positive action -->
+        <!--<button type="button" class="btn btn-success waves-effect waves-light">Success</button>-->
+        <!-- Contextual button for informational alert messages -->
+        <button v-on:click="Product" type="button" class="btn btn-info waves-effect waves-light">See Products</button>
+        <!-- Indicates caution should be taken with this action -->
+        <!--<button type="button" class="btn btn-warning waves-effect waves-light">Warning</button>-->
+        <!-- Indicates a dangerous or potentially negative action -->
+      <!--  <button type="button" class="btn btn-danger waves-effect waves-light">Danger</button>-->
+    </div>
 </div>
-    
+
 </template>
 
 <script>
-
+import axios from "axios";
 export default {
 
     data(){
@@ -30,6 +48,13 @@ export default {
         },
         beforeMount() {
             this.start();
+        },
+        Product:function(){
+            this.$router.push({name:'AddProducts'});
+        },
+        Transactions:function(){
+            this.$router.push({name:'Transactions'});
+
         }
     }
 }
@@ -37,5 +62,116 @@ export default {
 </script>
 
 <style >
+:root {
+    -btn-primary: #4285f4;
+    -btn-default: #2bbbad;
+    -btn-secondary: #a6c;
+    -btn-success: #00c851;
+    -btn-info: #33b5e5;
+    -btn-warning: #fb3;
+    -btn-danger: #ff3547;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+.null {
+    margin: 0;
+}
+
+.btn {
+    -webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+    padding: .84rem 2.14rem;
+    font-size: .81rem;
+    -webkit-transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
+    -o-transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
+    margin: .375rem;
+    border: 0;
+    -webkit-border-radius: .125rem;
+    border-radius: .125rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    white-space: normal;
+    word-wrap: break-word;
+    color: #fff;
+}
+
+.btn:focus, .btn:hover {
+    text-decoration: none;
+}
+
+.btn:active, .btn:focus, .btn:hover {
+    -webkit-box-shadow: 0 5px 11px 0 rgba(0,0,0,.18), 0 4px 15px 0 rgba(0,0,0,.15);
+    box-shadow: 0 5px 11px 0 rgba(0,0,0,.18), 0 4px 15px 0 rgba(0,0,0,.15);
+    outline: 0;
+}
+
+.btn:not(:disabled):not(.disabled) {
+    cursor: pointer;
+}
+
+.waves-effect {
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.btn-primary {
+    background-color: #4285f4!important;
+    color: #fff;
+}
+
+.btn-primary:hover {
+    color: #fff;
+    background-color: #0069d9;
+    border-color: #0062cc;
+}
+
+.btn-primary:not([disabled]):not(.disabled).active, .btn-primary:not([disabled]):not(.disabled):active, .show>.btn-primary.dropdown-toggle {
+    -webkit-box-shadow: 0 5px 11px 0 rgba(0,0,0,.18), 0 4px 15px 0 rgba(0,0,0,.15);
+    box-shadow: 0 5px 11px 0 rgba(0,0,0,.18), 0 4px 15px 0 rgba(0,0,0,.15);
+    background-color: #0b51c5!important;
+}
+
+.btn-default {
+    background-color: #2bbbad!important;
+    color: #fff;
+}
+
+.btn-secondary {
+    background-color: #a6c!important;
+    color: #fff;
+}
+
+.btn-success {
+    background-color: #00c851!important;
+    color: #fff;
+}
+
+.btn-info {
+    background-color: #33b5e5!important;
+    color: #fff;
+}
+
+.btn-warning {
+    background-color: #fb3!important;
+    color: #fff;
+}
+
+.btn-danger {
+    background-color: #ff3547!important;
+    color: #fff;
+}
+
 
 </style>

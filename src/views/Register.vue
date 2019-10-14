@@ -32,7 +32,7 @@
 </template>
 
 <script>
-
+import axios from 'axios';
 export default{
 	name:'register',
 	components:{
@@ -45,7 +45,7 @@ export default{
 				username:'',
 				email:'',
 				password:'',
-				rol:'',
+				rol:1,
 			}
 		}
 
@@ -55,13 +55,11 @@ export default{
 		register:function(){
 			axios.post(this.api_url+"user/register",this.user)
 			.then(response => {
-				var tok =this.permisos.token=response.data.token;
-				var Bearer="Bearer "+tok;
-				console.log(Bearer);
-				this.$router.push({name:'PuntoVenta'})
+				console.log("datos "+response.data);
+				this.$router.push({name:'PuntoVenta'});
           })
           .catch(e => {
-            alert("error verifique vien sus datos ")
+            alert("el error es  "+e);
           })
 		}
 
