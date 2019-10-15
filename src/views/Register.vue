@@ -79,8 +79,10 @@ export default{
 				}
 				else{
 					console.log("soy el cajero")
-					localStorage.setItem('token', JSON.stringify(response.data.token.token));
 					this.$router.push('/Products/'+response.data.user.rol);
+					var token=response.data.token.token;
+					console.log("tonken cajero "+token);
+					localStorage.setItem('token', JSON.stringify(token));
 				}
 			}).catch(e => {
 				alert("el error es  "+e.response);

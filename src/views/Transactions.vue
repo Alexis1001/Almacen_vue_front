@@ -2,7 +2,7 @@
   <div class="table-wrapper">
       <div class="table-title">
                     <div class="row">
-                        <div class="col-sm-6"><h2> Transactions <b>Products</b></h2></div>
+                        <div class="col-sm-6"><h2> <b>Transactions Products</b></h2></div>
                     </div>
                 </div>       
                 <table class="table table-striped table-hover" >
@@ -11,19 +11,19 @@
                             <th scope="col">id</th>
                             <th scope="col">type</th>
                             <th scope="col">decription</th>
-                            <th scope="col">inventory&nbsp;id</th>
                             <th scope="col">Created &nbsp; On</th>
-                            <th scope="col">update &nbsp; date &nbsp;On</th>
+                            <th scope="col">update &nbsp;  &nbsp; On</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr v-for="(item,index) in items" v-bind:key="index"  ata-status="activate">
-                            <td>. {{item.id}} :: {{index}}</td>
-                            <td>{{item}}</td>
-                            <td>pppp</td>
-                            <td>cccc</td>
-                            <td>ddd</td>
-                            <td>ddd</td>
+                            <td>{{item.id}}</td>
+                            <td v-if="item.type===1">added</td>
+                            <td v-else-if="item.type===2">sold</td>
+                            <td v-else-if="item.type===3">removed</td>
+                            <td>{{item.description}}</td>
+                            <td>{{item.created_at}}</td>
+                            <td>{{item.updated_at}}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -36,6 +36,7 @@
 <script>
 import axios from 'axios';
 export default {
+
     data(){
         
         return{
@@ -56,7 +57,7 @@ export default {
             this.url = "http://127.0.0.1:3333/api/v1/";
             axios.get(this.url + "transaction")
             .then(response => {
-            this.items= response.data;
+            this.items= response.data.transaction;
             console.log("Transactions realizados")
             console.log(response.data)
             console.log("transactiosn en el vector "+this.items);

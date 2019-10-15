@@ -3,7 +3,7 @@ import App from './App.vue';
 import router from './router';
 import store from './store';
 import './registerServiceWorker';
-import Login from './Login.vue';
+//import Login from './Login.vue';
 
 //import BootstrapVue from 'bootstrap-vue'
 //Vue.use(BootstrapVue)

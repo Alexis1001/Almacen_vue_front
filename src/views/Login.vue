@@ -37,21 +37,23 @@ export default{
           var token=response.data.token.token
           var bearer="Bearer "+token;
           var user_rol=response.data.user.rol;
-          console.log("token "+bearer);
-          console.log("rol "+user_rol);
+          //console.log("token "+bearer);
+          //console.log("rol "+user_rol);
           
           if(user_rol===1){
-            console.log("soy el administrador ");
+            //console.log("soy el administrador ");
             this.$router.push('/Admin/'+response.data.user.rol);
             localStorage.setItem('token', JSON.stringify(response.data.token.token));
-             
+            //console.log("boy a administrador ");
           }
           else{
             console.log("soy el cajero");
-            //this.$router.push({name:'PuntoVenta',params:{rol:user_rol} });
+            //this.$router.push({name:'PuntoVenta',params:{rol:user_rol} }); 
+            var token=response.data.token.token;
+            //console.log("token "+token);
             this.$router.push('/Products/'+response.data.user.rol);
-            localStorage.setItem('token', JSON.stringify(response.data.token.token));
-          
+            localStorage.setItem('token', JSON.stringify(token));
+            
           }
          
           })

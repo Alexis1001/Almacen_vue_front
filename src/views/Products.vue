@@ -74,17 +74,61 @@
                             <td><a href="#" class="btn btn-sm manage">Manage</a></td>
                         </tr>
                     </tbody>
+                    
                 </table>
+              
+              <button v-on:click="addProduct">click perro </button>
+
             </div>     
 
 </template>
 
-
 <script>
+export default {
+    data(){
+        return{
+            token:'',
+            permisos:'',
+            rol:'',
+            
+        }
+    },
+    mounted(){
+        this.start();
+    },
+    methods: {
+        start:function() {
+            this.token=JSON.parse(localStorage.getItem("token")); 
+            console.log("el vedadero token "+this.token);
 
+            if(this.$router.history.current.path== '/Products/1'){
+                console.log("administrado en en la caja ");
+                this.rol=1;
+                console.log(" admin token "+this.token);
+                console.log(" admin rol "+this.rol);
+                
+            }
+            if(this.$router.history.current.path== '/Products/2'){
+               console.log("cajero en la caja ");
+               this.rol=2;
+               console.log("cajero  token "+this.token);
+               console.log("cajero rol "+this.rol);
 
+            }          
+        },
+        addProduct:function(){
+            console.log("entro en el metodo add product");
+            this.$router.push('/AddProducts');
+            console.log("enviar el token y el rol ");
+            localStorage.setItem('token', JSON.stringify(this.token));
+            localStorage.setItem('rol', JSON.stringify(this.rol));
+
+            /*this.$router.push('/Products/'+response.data.user.rol);*/
+        },
+       
+    },
+}
 </script>
-
 
 <style>
 

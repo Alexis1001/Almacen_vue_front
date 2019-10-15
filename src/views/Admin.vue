@@ -7,20 +7,12 @@
         <div class="form-group"></div>
         <p class="null">welcome warehouse</p>
         <hr />
-        <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
-        <button type="button" class="btn btn-primary waves-effect waves-light">see inventories </button>
-        <!-- Default button -->
-        <!--<button type="button" class="btn btn-default waves-effect waves-light">see transaction</button>-->
-        <!-- Secondary button -->
-        <button type="button"  v-on:click="Transactions"    class="btn btn-secondary waves-effect waves-light">see transactions</button>
-        <!-- Indicates a successful or positive action -->
-        <!--<button type="button" class="btn btn-success waves-effect waves-light">Success</button>-->
-        <!-- Contextual button for informational alert messages -->
-        <button v-on:click="Product" type="button" class="btn btn-info waves-effect waves-light">See Products</button>
-        <!-- Indicates caution should be taken with this action -->
-        <!--<button type="button" class="btn btn-warning waves-effect waves-light">Warning</button>-->
-        <!-- Indicates a dangerous or potentially negative action -->
-      <!--  <button type="button" class="btn btn-danger waves-effect waves-light">Danger</button>-->
+        <button type="button" v-on:click="Inventories" class="btn btn-primary waves-effect waves-light">see inventories </button>
+        
+        <button type="button" v-on:click="Transactions"    class="btn btn-secondary waves-effect waves-light">see transactions</button>
+        
+        <button v-on:click="Products" type="button" class="btn btn-info waves-effect waves-light">See Products</button>
+        
     </div>
 </div>
 
@@ -29,32 +21,54 @@
 <script>
 import axios from "axios";
 export default {
-
     data(){
         return {
-            rol:''
+            rol:'',
+            token:'',
+            tokenx:'',
         }
+    },
+    mounted(){
+        this.start();
     },
     methods:{
         start(){
-            var token=localStorage.getItem('token')
-            console.log("token "+token);
+            this.tokenx=localStorage.getItem('token'); 
+            console.log("token x "+this.tokenx);
+            var tamanio=this.tokenx.length;
+            console.log("tamanio del tokenx "+tamanio);
+            this.token=this.tokenx.substr(1,tamanio-2);
+            console.log("el token original "+this.token);
+            /*this.config = {
+                headers: {
+                    Authorization:"Bearer " + this.token
+                    }
+            };*/    
             if(this.$router.history.current.path== '/Admin/1'){
                 this.rol=1;
-               
-                
+                console.log(" admin token "+this.token);
+                console.log("admin  user rol "+this.rol);
+            }
+            else{
+                this.rol=2;
+               console.log("CAJERO entro ala caja directo");
             }
            
         },
-        beforeMount() {
-            this.start();
-        },
-        Product:function(){
-            this.$router.push({name:'Products'});
-        },
         Transactions:function(){
             this.$router.push({name:'Transactions'});
+        },
+        Inventories:function(){
+            this.$router.push({name:'Inventories'});
+        },
+        Products:function(){
+            
+            localStorage.setItem('token', JSON.stringify(this.token));
+            this.$router.push('/Products/'+this.rol);
+            console.log("este es el token del admin en la funcion  "+this.token);
+            console.log("este el user rol del admin en la funcion "+this.rol);
         }
+
     }
 }
 

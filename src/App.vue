@@ -5,7 +5,9 @@
       <router-link to="/about">About</router-link> |
       <router-link to="/Login">login</router-link>|
       <router-link to="/Register">register</router-link>|
-      <router-link to="/Transactions">Transactions</router-link>
+      <router-link to="/Transactions">Transactions</router-link>|
+      <router-link to="/Inventories">Inventories</router-link>|
+      <router-link to="/AddProducts">Add Products </router-link>
      
     </div>
     <router-view/>
