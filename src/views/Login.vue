@@ -21,7 +21,7 @@ export default{
     },
     data(){
         return{
-          api_url:'http://127.0.0.1:3333/api/v1/',
+          api_url:'https://warehousev1.herokuapp.com/api/v1/',
           user:{
             email:'',
             password:'',

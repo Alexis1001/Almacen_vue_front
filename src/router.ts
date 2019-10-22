@@ -8,6 +8,11 @@ import Products from './views/Products.vue';
 import Transactions from './views/Transactions.vue';
 import Inventories from './views/Inventories.vue';
 import AddProducts from './views/AddProducts.vue';
+import SoldProduct from  './views/SoldProduct.vue';
+import ByExpired from './views/ByExpired.vue';
+import NewPiecesProduct from  './views/NewPiecesProduct.vue';
+import ListSales from './views/ListSales.vue';
+
 
 Vue.use(Router);
 
@@ -24,6 +29,11 @@ export default new Router({
     { path:'/Transactions',name:'Transactions',component:Transactions},
     { path:'/AddProducts',name:'AddProducts',component:AddProducts},
     { path:'/Inventories',name:'Inventories',component:Inventories},
+    { path:'/SoldProduct',name:'SoldProduct',component:SoldProduct},
+    { path:'/ByExpired',name:'ByExpired',component:ByExpired},
+    { path:'/NewPiecesProduct',name:'NewPiecesProduct',component:NewPiecesProduct},
+    { path:'/ListSales',name:'ListSales',component:ListSales},
+
   ],
 
 });

@@ -43,7 +43,7 @@ export default {
     data(){
         return{
             inventories:[],
-            url:"http://127.0.0.1:3333/api/v1/",
+            url:"https://warehousev1.herokuapp.com/api/v1/",
         }
     },
     mounted(){

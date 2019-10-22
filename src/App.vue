@@ -1,13 +1,18 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link> |
+      <!--<router-link to="/">Home</router-link> |-->
+      <!--<router-link to="/about">About</router-link> |-->
       <router-link to="/Login">login</router-link>|
-      <router-link to="/Register">register</router-link>|
+      <!--<router-link to="/Register">register</router-link>|-->
       <router-link to="/Transactions">Transactions</router-link>|
       <router-link to="/Inventories">Inventories</router-link>|
-      <router-link to="/AddProducts">Add Products </router-link>
+     <!--<router-link to="/AddProducts">Add Products </router-link>|-->
+    <!--<router-link to="/ByExpired">Delete By Expired</router-link>|-->
+    <!-- <router-link to="/SoldProduct">Sold product</router-link>|-->
+    <!-- <router-link to="/NewPiecesProduct">New product pieces</router-link>|-->
+    <!-- <router-link to="/ListSales">Ventas</router-link>|-->
+      
      
     </div>
     <router-view/>

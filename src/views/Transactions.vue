@@ -54,7 +54,7 @@ export default {
     methods:{
         ListTransactions(){
             console.log("Componente listo");
-            this.url = "http://127.0.0.1:3333/api/v1/";
+            this.url = "https://warehousev1.herokuapp.com/api/v1/";
             axios.get(this.url + "transaction")
             .then(response => {
             this.items= response.data.transaction;
