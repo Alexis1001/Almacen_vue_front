@@ -125,7 +125,7 @@ export default{
 			console.log("AAA token "+this.token);
 			this.$router.push('/Products/'+user_rol);
 			localStorage.setItem('token', JSON.stringify(this.token));
-			
+			console.log("hola mundo");
 		},
 
 	},
